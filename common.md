@@ -216,7 +216,7 @@ abbreviations should generally be avoided.
 *Right:*
 
 ```js
-let adminUser = db.query('SELECT * FROM users ...');
+const adminUser = db.query('SELECT * FROM users ...');
 
 profileHeaderUtils.js
 ```
@@ -224,7 +224,7 @@ profileHeaderUtils.js
 *Wrong:*
 
 ```js
-let admin_user = db.query('SELECT * FROM users ...');
+const admin_user = db.query('SELECT * FROM users ...');
 
 profile-header-utils.js
 profile_header_utils.js
@@ -263,7 +263,7 @@ using all uppercase letters.
 *Right:*
 
 ```js
-let SECOND = 1 * 1000;
+const SECOND = 1 * 1000;
 
 function File() {
 }
