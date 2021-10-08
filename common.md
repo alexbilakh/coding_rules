@@ -18,7 +18,7 @@ This is basically for Javascript because we use Javascript grammer for all of pr
 * [Not over 400 lines per file](#not-over-400-lines-per-file)
 * [Use single quotes](#use-single-quotes)
 * [Opening braces go on the same line](#opening-braces-go-on-the-same-line)
-* [Declare one variable per var statement](#declare-one-variable-per-var-statement)
+* [Declare one variable per var statement](#declare-one-variable-per-let-statement)
 * [React formatting](#react-formatting)
 
 ### Naming Conventions
@@ -111,13 +111,13 @@ Use single quotes, unless you are writing JSON.
 *Right:*
 
 ```js
-var foo = 'bar';
+let foo = 'bar';
 ```
 
 *Wrong:*
 
 ```js
-var foo = "bar";
+let foo = "bar";
 ```
 
 ### Opening braces go on the same line
@@ -143,9 +143,9 @@ if (true)
 
 Also, notice the use of whitespace before and after the condition statement.
 
-### Declare one variable per var statement
+### Declare one variable per let statement
 
-Declare one variable per var statement, it makes it easier to re-order the
+Declare one variable per let statement, it makes it easier to re-order the
 lines. However, ignore [Crockford][crockfordconvention] when it comes to
 declaring variables deeper inside a function, just put the declarations wherever
 they make sense.
@@ -153,12 +153,12 @@ they make sense.
 *Right:*
 
 ```js
-var keys   = ['foo', 'bar'];
-var values = [23, 42];
+let keys   = ['foo', 'bar'];
+let values = [23, 42];
 
-var object = {};
+let object = {};
 while (keys.length) {
-  var key = keys.pop();
+  let key = keys.pop();
   object[key] = values.pop();
 }
 ```
@@ -166,7 +166,7 @@ while (keys.length) {
 *Wrong:*
 
 ```js
-var keys = ['foo', 'bar'],
+let keys = ['foo', 'bar'],
     values = [23, 42],
     object = {},
     key;
@@ -216,7 +216,7 @@ abbreviations should generally be avoided.
 *Right:*
 
 ```js
-var adminUser = db.query('SELECT * FROM users ...');
+let adminUser = db.query('SELECT * FROM users ...');
 
 profileHeaderUtils.js
 ```
@@ -224,7 +224,7 @@ profileHeaderUtils.js
 *Wrong:*
 
 ```js
-var admin_user = db.query('SELECT * FROM users ...');
+let admin_user = db.query('SELECT * FROM users ...');
 
 profile-header-utils.js
 profile_header_utils.js
@@ -263,7 +263,7 @@ using all uppercase letters.
 *Right:*
 
 ```js
-var SECOND = 1 * 1000;
+let SECOND = 1 * 1000;
 
 function File() {
 }
@@ -292,8 +292,8 @@ keys when your interpreter complains:
 *Right:*
 
 ```js
-var a = ['hello', 'world'];
-var b = {
+let a = ['hello', 'world'];
+let b = {
   good: 'code',
   'is generally': 'pretty',
 };
@@ -302,10 +302,10 @@ var b = {
 *Wrong:*
 
 ```js
-var a = [
+let a = [
   'hello', 'world'
 ];
-var b = {"good": 'code'
+let b = {"good": 'code'
         , is generally: 'pretty'
         };
 ```
@@ -320,7 +320,7 @@ the triple equality operator as it will work just as expected.
 *Right:*
 
 ```js
-var a = 0;
+let a = 0;
 if (a !== '') {
   console.log('winning');
 }
@@ -330,7 +330,7 @@ if (a !== '') {
 *Wrong:*
 
 ```js
-var a = 0;
+let a = 0;
 if (a == '') {
   console.log('losing');
 }
@@ -345,7 +345,7 @@ The ternary operator should not be used on a single line. Split it up into multi
 *Right:*
 
 ```js
-var foo = (a === b)
+let foo = (a === b)
   ? 1
   : 2;
 ```
@@ -353,7 +353,7 @@ var foo = (a === b)
 *Wrong:*
 
 ```js
-var foo = (a === b) ? 1 : 2;
+let foo = (a === b) ? 1 : 2;
 ```
 
 ### Use descriptive conditions
@@ -363,7 +363,7 @@ Any non-trivial conditions should be assigned to a descriptively named variable 
 *Right:*
 
 ```js
-var isValidPassword = password.length >= 4 && /^(?=.*\d).{4,}$/.test(password);
+let isValidPassword = password.length >= 4 && /^(?=.*\d).{4,}$/.test(password);
 
 if (isValidPassword) {
   console.log('winning');
@@ -428,7 +428,7 @@ further:
 
 ```js
 function isPercentage(val) {
-  var isInRange = (val >= 0 && val <= 100);
+  let isInRange = (val >= 0 && val <= 100);
   return isInRange;
 }
 ```
@@ -537,7 +537,7 @@ segments of your code. Don't use comments to restate trivial things.
 
 ```js
 // 'ID_SOMETHING=VALUE' -> ['ID_SOMETHING=VALUE', 'SOMETHING', 'VALUE']
-var matches = item.match(/ID_([^\n]+)=([^\n]+)/));
+let matches = item.match(/ID_([^\n]+)=([^\n]+)/));
 
 // This function has a nasty side effect where a failure to increment a
 // redis counter used for statistics will cause an exception. This needs
@@ -546,7 +546,7 @@ function loadUser(id, cb) {
   // ...
 }
 
-var isSessionValid = (session.expires < Date.now());
+let isSessionValid = (session.expires < Date.now());
 if (isSessionValid) {
   // ...
 }
@@ -556,7 +556,7 @@ if (isSessionValid) {
 
 ```js
 // Execute a regex
-var matches = item.match(/ID_([^\n]+)=([^\n]+)/);
+let matches = item.match(/ID_([^\n]+)=([^\n]+)/);
 
 // Usage: loadUser(5, function() { ... })
 function loadUser(id, cb) {
@@ -564,7 +564,7 @@ function loadUser(id, cb) {
 }
 
 // Check if the session is valid
-var isSessionValid = (session.expires < Date.now());
+let isSessionValid = (session.expires < Date.now());
 // If the session is valid
 if (isSessionValid) {
   // ...
@@ -585,7 +585,7 @@ be forever grateful.
 *Right:*
 
 ```js
-var a = [];
+let a = [];
 if (!a.length) {
   console.log('winning');
 }
@@ -598,7 +598,7 @@ Array.prototype.empty = function() {
   return !this.length;
 }
 
-var a = [];
+let a = [];
 if (a.empty()) {
   console.log('losing');
 }
