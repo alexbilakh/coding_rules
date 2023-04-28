@@ -600,6 +600,6 @@ Array.prototype.empty = function() {
 
 let a = [];
 if (a.empty()) {
-  console.log('losing');
+  console.log('losing empties');
 }
 ```
